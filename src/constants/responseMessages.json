@@ -1,0 +1,8 @@
+{
+  "2000": "User Successfully Created",
+  "2001": "Book created",
+  "4000": "Username already exist",
+  "4001": "User not exist",
+  "4002": "Wrong password",
+  "4003": "Book Already exist"
+}
