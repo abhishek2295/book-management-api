@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "5623d988-8d22-44ed-974f-d7844a284c6a",
+		"name": "Book Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20384390"
+	},
+	"item": [
+		{
+			"name": "Verify User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"abhi\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}auth/verify-credential",
+					"host": [
+						"{{local}}auth"
+					],
+					"path": [
+						"verify-credential"
+					]
+				},
+				"description": "### Verify Credentials and Generate JWT Token\n\n#### Description\n\nVerifies the provided username and password against the credentials stored in the database. If the credentials are valid, it generates a JSON Web Token (JWT) to authenticate the user for further requests.\n\n#### Endpoint\n\n- **Method:** POST\n    \n- **URL:** `http://localhost:3000/auth/verify-credential`\n    \n\n#### Request Body\n\n- **Content Type:** JSON\n    \n- **Parameters:**\n    \n    - `username` (string): The username of the user to be verified.\n        \n    - `password` (string): The password of the user to be verified."
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"abhi\",\r\n    \"password\":\"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}auth/create-user",
+					"host": [
+						"{{baseUrl}}auth"
+					],
+					"path": [
+						"create-user"
+					]
+				},
+				"description": "Creates a new user in the database with the provided username and password.\n\n#### Endpoint\n\n- **Method:** POST\n- **URL:** `http://localhost:3000/auth/create-user`\n    \n\n#### Request Body\n\n- **Content Type:** JSON\n- **Parameters:**\n    - `username` (string): The username of the user to be created.\n    - `password` (string): The password of the user to be created."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6ImFiaGkiLCJpYXQiOjE3MTQwNjk0MjcsImV4cCI6MTcxNDA3MzAyN30.RJmALK-zOQ1a36StU3ZXtCg3zGjhPCrTy0RnGzy0ICY",
+						"type": "text",
+						"uuid": "1a5caafa-4299-4354-9962-e43e2825741c"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test\",\r\n    \"author\": \"Test\",\r\n    \"publicationYear\": 2019\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{local}}api/add-book",
+					"host": [
+						"{{local}}api"
+					],
+					"path": [
+						"add-book"
+					]
+				},
+				"description": "Creates a new entry for a book in the database.\n\n#### Endpoint\n\n- **Method:** POST\n    \n- **URL:** `http://localhost:3000/api/add-book`\n    \n\n#### Request Body\n\n- **Content Type:** JSON\n    \n- **Parameters:**\n    \n    - `title` (string): The title of the book.\n        \n    - `author` (string): The author of the book.\n        \n    - `publicationYear` (integer): The publication year of the book."
+			},
+			"response": []
+		},
+		{
+			"name": "Search Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{local}}api/search-book/?author=Test&publicationyear=2019",
+					"host": [
+						"{{local}}api"
+					],
+					"path": [
+						"search-book",
+						""
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Test"
+						},
+						{
+							"key": "publicationyear",
+							"value": "2019"
+						}
+					]
+				},
+				"description": "Retrieves books from the database based on the provided filters.\n\n#### Endpoint\n\n- **Method:** GET\n    \n- **URL:** `http://localhost:3000/api/search-book/?author=Test&publicationyear=2019`\n    \n\n#### Query Parameters\n\n- `author` (string, optional): Filters books by author name.\n    \n- `publicationyear` (integer, optional): Filters books by publication year."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://65.1.51.164:3000/",
+			"type": "string"
+		}
+	]
+}
